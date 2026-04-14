@@ -7,10 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-deep: #080e1a;
-    --bg-panel: #0d1525;
-    --bg-card: #111d30;
-    --bg-hover: #162238;
+    --bg-deep: #1a2540;
+    --bg-panel: #1e2e50;
+    --bg-card: #223460;
+    --bg-hover: #2a3d6e;
     --border: rgba(0, 180, 255, 0.12);
     --border-bright: rgba(0, 220, 255, 0.35);
 
@@ -912,6 +912,170 @@
     flex-direction: column;
     overflow: hidden;
   }
+
+  /* ── MOBILE RESPONSIVE ──────────────────────── */
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+      height: auto;
+      min-height: 100vh;
+      overflow: auto;
+    }
+
+    /* Hide sidebar on mobile — show as top bar */
+    .sidebar {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .sidebar::after { display: none; }
+
+    .logo-wrap {
+      padding: 12px 16px;
+      border-bottom: none;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .logo { font-size: 20px; }
+    .logo-sub { display: none; }
+
+    .nav {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      overflow-x: auto;
+    }
+
+    .nav-label { display: none; }
+
+    .nav-item {
+      padding: 12px 12px;
+      font-size: 11px;
+      white-space: nowrap;
+      gap: 6px;
+    }
+
+    .nav-badge { font-size: 9px; padding: 1px 5px; }
+
+    .sidebar-footer { display: none; }
+
+    /* Main layout stacks vertically */
+    .main { overflow: visible; }
+
+    .content-area {
+      flex-direction: column;
+      overflow: visible;
+    }
+
+    .main-content {
+      overflow: visible;
+    }
+
+    /* Topbar */
+    .topbar {
+      padding: 12px 14px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-title { font-size: 14px; }
+    .page-subtitle { font-size: 10px; }
+    .status-pill { font-size: 10px; padding: 4px 9px; }
+    .notif-btn { width: 30px; height: 30px; }
+
+    /* Stats row */
+    .stats-row {
+      padding: 12px 14px 0;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      flex: 1 1 calc(50% - 4px);
+      min-width: 0;
+      padding: 10px 12px;
+    }
+
+    .stat-value { font-size: 22px; }
+    .stat-label { font-size: 9px; }
+    .stat-change { font-size: 10px; }
+
+    /* Worklist */
+    .worklist-section {
+      padding: 12px 14px 16px;
+    }
+
+    .worklist-toolbar {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .wl-title { font-size: 11px; }
+    .search-box { max-width: 100%; flex: 1 1 100%; order: -1; }
+    .search-box input { font-size: 12px; padding: 7px 10px 7px 30px; }
+    .filter-btn { font-size: 11px; padding: 6px 10px; }
+    .download-btn { font-size: 11px; padding: 6px 12px; }
+
+    /* Table — horizontal scroll */
+    .table-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table { min-width: 680px; }
+
+    th {
+      padding: 10px 12px;
+      font-size: 9px;
+      letter-spacing: 1.2px;
+    }
+
+    td {
+      padding: 10px 12px;
+      font-size: 11px;
+    }
+
+    .loan-num { font-size: 11px; }
+    .amount { font-size: 11px; }
+    .location-chip { font-size: 10px; padding: 2px 6px; }
+    .priority-badge { font-size: 10px; padding: 2px 7px; }
+    .type-tag { font-size: 10px; padding: 2px 7px; }
+    .action-btn { font-size: 10px; padding: 4px 8px; }
+
+    .table-footer {
+      font-size: 10px;
+      padding: 9px 12px;
+    }
+
+    .page-btn { width: 24px; height: 24px; font-size: 10px; }
+
+    /* Hide detail panel on mobile (accessible via row click) */
+    .detail-panel {
+      width: 100%;
+      border-left: none;
+      border-top: 1px solid var(--border);
+      max-height: 420px;
+    }
+
+    .dp-loan-id { font-size: 18px; }
+    .dp-name { font-size: 13px; }
+    .dp-body { padding: 14px 16px; }
+    .dp-header { padding: 14px 16px 12px; }
+    .dp-actions { padding: 12px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -1068,7 +1232,7 @@
                   <td><span class="amount">₹48,00,000</span></td>
                   <td><span class="priority-badge high"><span class="priority-dot"></span>High</span></td>
                   <td><span class="type-tag salaried">Salaried</span></td>
-                  <td><div class="action-cell"><button class="action-btn">View →</button></div></td>
+                  <td><div class="action-cell"><button class="action-btn">Action →</button></div></td>
                 </tr>
                 <tr onclick="selectRow(this, 'HL9034', 'Priya Nair', 'Bangalore', '₹72,50,000', 'Medium', 'Self Employed')">
                   <td><span class="loan-num">HL9034</span></td>
@@ -1077,7 +1241,7 @@
                   <td><span class="amount">₹72,50,000</span></td>
                   <td><span class="priority-badge medium"><span class="priority-dot"></span>Medium</span></td>
                   <td><span class="type-tag self">Self Employed</span></td>
-                  <td><div class="action-cell"><button class="action-btn">View →</button></div></td>
+                  <td><div class="action-cell"><button class="action-btn">Action →</button></div></td>
                 </tr>
                 <tr onclick="selectRow(this, 'HL7712', 'Rajesh Sharma', 'Pune', '₹35,00,000', 'High', 'Salaried')">
                   <td><span class="loan-num">HL7712</span></td>
@@ -1086,7 +1250,7 @@
                   <td><span class="amount">₹35,00,000</span></td>
                   <td><span class="priority-badge high"><span class="priority-dot"></span>High</span></td>
                   <td><span class="type-tag salaried">Salaried</span></td>
-                  <td><div class="action-cell"><button class="action-btn">View →</button></div></td>
+                  <td><div class="action-cell"><button class="action-btn">Action →</button></div></td>
                 </tr>
                 <tr onclick="selectRow(this, 'HL6641', 'Sneha Iyer', 'Chennai', '₹1,05,00,000', 'Low', 'Self Employed')">
                   <td><span class="loan-num">HL6641</span></td>
@@ -1095,7 +1259,7 @@
                   <td><span class="amount">₹1,05,00,000</span></td>
                   <td><span class="priority-badge low"><span class="priority-dot"></span>Low</span></td>
                   <td><span class="type-tag self">Self Employed</span></td>
-                  <td><div class="action-cell"><button class="action-btn">View →</button></div></td>
+                  <td><div class="action-cell"><button class="action-btn">Action →</button></div></td>
                 </tr>
                 <tr onclick="selectRow(this, 'HL5509', 'Vikram Desai', 'Hyderabad', '₹62,75,000', 'Medium', 'Salaried')">
                   <td><span class="loan-num">HL5509</span></td>
@@ -1104,7 +1268,7 @@
                   <td><span class="amount">₹62,75,000</span></td>
                   <td><span class="priority-badge medium"><span class="priority-dot"></span>Medium</span></td>
                   <td><span class="type-tag salaried">Salaried</span></td>
-                  <td><div class="action-cell"><button class="action-btn">View →</button></div></td>
+                  <td><div class="action-cell"><button class="action-btn">Action →</button></div></td>
                 </tr>
                 <tr onclick="selectRow(this, 'HL4473', 'Ananya Krishnan', 'Kochi', '₹29,00,000', 'Low', 'Salaried')">
                   <td><span class="loan-num">HL4473</span></td>
@@ -1113,7 +1277,7 @@
                   <td><span class="amount">₹29,00,000</span></td>
                   <td><span class="priority-badge low"><span class="priority-dot"></span>Low</span></td>
                   <td><span class="type-tag salaried">Salaried</span></td>
-                  <td><div class="action-cell"><button class="action-btn">View →</button></div></td>
+                  <td><div class="action-cell"><button class="action-btn">Action →</button></div></td>
                 </tr>
                 <tr onclick="selectRow(this, 'HL3302', 'Suresh Pillai', 'Ahmedabad', '₹88,00,000', 'High', 'Self Employed')">
                   <td><span class="loan-num">HL3302</span></td>
@@ -1122,7 +1286,7 @@
                   <td><span class="amount">₹88,00,000</span></td>
                   <td><span class="priority-badge high"><span class="priority-dot"></span>High</span></td>
                   <td><span class="type-tag self">Self Employed</span></td>
-                  <td><div class="action-cell"><button class="action-btn">View →</button></div></td>
+                  <td><div class="action-cell"><button class="action-btn">Action →</button></div></td>
                 </tr>
                 <tr onclick="selectRow(this, 'HL2218', 'Meera Kulkarni', 'Pune', '₹44,50,000', 'Medium', 'Self Employed')">
                   <td><span class="loan-num">HL2218</span></td>
@@ -1131,7 +1295,7 @@
                   <td><span class="amount">₹44,50,000</span></td>
                   <td><span class="priority-badge medium"><span class="priority-dot"></span>Medium</span></td>
                   <td><span class="type-tag self">Self Employed</span></td>
-                  <td><div class="action-cell"><button class="action-btn">View →</button></div></td>
+                  <td><div class="action-cell"><button class="action-btn">Action →</button></div></td>
                 </tr>
               </tbody>
             </table>
